@@ -1,0 +1,83 @@
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+
+use_xft yes
+xftfont terminus:size=9
+override_utf8_locale yes
+text_buffer_size 2048
+
+own_window yes
+own_window_type desktxp
+own_window_class Conky
+own_window_transparent yes
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+
+own_window_argb_visual yes
+own_window_argb_value 100
+
+alignment tr
+#gap_x 800
+#gap_y 100
+#minimum_size 38 100
+
+default_bar_size 60 8
+
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+
+draw_shades no
+
+#default_color efefef
+#default_shade_color 1d1d1d
+color0 ffffff
+color1 666666
+color2 707070
+
+
+#lua_load ~/.conky/conkybg.lua
+#lua_draw_hook_pre conky_draw_bg
+
+TEXT
+${voffset 10}
+${color0}${goto 92}CPU1:  ${goto 130}${color1}${cpu cpu1}%${font}${goto 170}${color0}Temperature: ${color1}${execi 2 sensors | grep 'Core 0' | cut -c18-19}°C${color0}
+${color0}${goto 92}CPU2:  ${goto 130}${color1}${cpu cpu2}%${font}${goto 170}${color0}Temperature: ${color1}${execi 2 sensors | grep 'Core 1' | cut -c18-19}°C${color0}
+${color0}${goto 92}CPU3:  ${goto 130}${color1}${cpu cpu3}%${font}${goto 170}${color0}Temperature: ${color1}${execi 2 sensors | grep 'Core 2' | cut -c18-19}°C${color0}
+${color0}${goto 92}CPU4:  ${goto 130}${color1}${cpu cpu4}%${font}${goto 170}${color0}Temperature: ${color1}${execi 2 sensors | grep 'Core 3' | cut -c18-19}°C${color0}
+
+
+${color0}${goto 92}RAM:   ${goto 130}${color1}${memperc}%${font}         ${color0}${goto 170}Free: ${color1}${memeasyfree}      ${goto 290} ${color0}Used: ${color1}${mem}
+${color0}${goto 92}SWAP:  ${goto 130}${color1}${swapperc}%${font}        ${color0}${goto 170}Free: ${color1}${swapfree}         ${goto 290} ${color0}Used: ${color1}${swap}
+${color0}${goto 92}HOME:  ${goto 130}${color1}${fs_used_perc /home}%     ${color0}${goto 170}Free: ${color1}${fs_free /home}    ${goto 290} ${color0}Used: ${color1}${fs_used /home}
+${color0}${goto 92}ROOT:  ${goto 130}${color1}${fs_used_perc /}%         ${color0}${goto 170}Free: ${color1}${fs_free /}        ${goto 290} ${color0}Used: ${color1}${fs_used /}
+${color0}${goto 92}MEDIA: ${goto 130}${color1}${fs_used_perc /mnt/hue}%  ${color0}${goto 170}Free: ${color1}${fs_free /mnt/hue} ${goto 290} ${color0}Used: ${color1}${fs_used /mnt/hue}
+
+
+${color0}${goto 92}Up:    ${goto 130}${upspeed eth0}${color}${font} ${alignr 15}${color2}${upspeedgraph eth0 8,190 92B6F1 CCDFFF}
+${color0}${goto 92}Total: ${goto 130}${color1}${totalup eth0}
+${color0}${goto 92}Down:  ${goto 130}${downspeed eth0}${color}${font} ${alignr 15}${color2}${downspeedgraph eth0 8,190 92B6F1 CCDFFF}
+${color0}${goto 92}Total: ${goto 130}${color1}${totaldown eth0}
+
+
+
+${color0}${goto 92}GPU:  ${color1}${nvidia gpuutil}% ${color0}${goto 141}  @ ${color1}${nvidia gpufreq}MHz ${goto 210}${color0}${goto 290}
+${color0}${goto 92}VRAM: ${color1}${nvidia memutil}% ${color0} of ${color1}${nvidia memtotal}${color0}MB @ ${color1}${nvidia memfreq}MHz${color0}${goto 290}MEM  bw ${color1}${nvidia membwutil}%
+${color0}${goto 92}Temp: ${color1}${nvidia temp}°C ${color0}${goto 160}Perf ${color1}${nvidia perflevel} (${nvidia perflevelmin}-${nvidia perflevelmax}): ${color2}${nvidia perfmode}${color0}${goto 290}PCIe bw ${color1}${nvidia pcieutil}%
+${color0}${goto 92}FAN:  ${color1}${nvidia fanspeed} RPM (${nvidia fanlevel}%)
+
+${image /home/h3nnn4n/.conky_config/conky_notify_os/base.png         -p 10,1   -s 400x86}
+${image /home/h3nnn4n/.conky_config/conky_notify_os/base.png         -p 10,81  -s 400x86}
+${image /home/h3nnn4n/.conky_config/conky_notify_os/base.png         -p 10,160 -s 400x86}
+${image /home/h3nnn4n/.conky_config/conky_notify_os/base.png         -p 10,240 -s 400x86}
+
+${image /home/h3nnn4n/.conky_config/conky_notify_os/Task_Manager.png -p 32,25  -s 45x45}
+${image /home/h3nnn4n/.conky_config/conky_notify_os/Memory.png       -p 32,98  -s 45x45}
+${image /home/h3nnn4n/.conky_config/conky_notify_os/wlan100.png      -p 32,176 -s 45x45}
+${image /home/h3nnn4n/.conky_config/conky_notify_os/gpu.png          -p 32,256 -s 45x45}
